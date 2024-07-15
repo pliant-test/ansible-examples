@@ -1,0 +1,3 @@
+- name: cowsay
+  src: https://github.com/eniac111/ansible-sample-cowsay
+  version: main
