@@ -1,0 +1,13 @@
+---
+# This playbook prints a simple debug message
+- name: Echo
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+  - name: pause for 30 seconds
+    pause:
+      seconds: 30
+  - name: Print debug message
+    debug:
+      msg: Hello, world!
