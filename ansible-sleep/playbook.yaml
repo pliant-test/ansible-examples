@@ -7,7 +7,7 @@
   tasks:
   - name: pause for 30 seconds
     pause:
-      seconds: 30
+      seconds: "{{ sleep | default(30) }}"
   - name: Print debug message
     debug:
-      msg: Hello, world!
+      msg: "{{ message | default('Hello, world!') }}"
