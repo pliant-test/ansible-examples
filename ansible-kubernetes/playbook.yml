@@ -2,8 +2,17 @@
   hosts: servers
 
   tasks:
-  - name: Get a list of all pods from any namespace
-    k8s_info:
-      kind: Pod
+  - name: Install python packages for managing kubernetes
+    ansible.builtin.pip:
+      name:
+        - kubernetes >= 24.2.0
+        - PyYAML >= 3.11
+        - kubernetes >= 24.2.0
+        - jsonpatch
+  - name: Get an existing Service object
+    kubernetes.core.k8s_info:
+      api_version: v1
+      kind: Service
+      name: web
       namespace: "{{ namespace | default('default') }}"
-    register: pod_list
+    register: web_service
